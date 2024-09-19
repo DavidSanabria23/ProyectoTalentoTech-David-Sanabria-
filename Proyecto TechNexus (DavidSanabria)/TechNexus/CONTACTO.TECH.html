@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contáctenos</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="./favicon.ico.png">
+</head>
+<body>
+    <a href="INDEX.TECH SOLUTIONS.html" style="text-decoration: none;">Regresar al menú principal</a>
+    <h1>¿Interesado en nuestros servicios?</h1>
+    <h2>¡Regístrese y Contáctenos!</h2>
+
+    <br>
+    
+    <section id="contacto">
+        <form class="contact-form" action="enviar_formulario.php" method="post">
+            <label for="nombre"><h4>Ingresar un nombre:</h4></label>
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" required>
+        
+            <label for="apellido"><h4>Ingresar un apellido:</h4></label>
+            <input type="text" id="apellido" name="apellido" placeholder="Apellido completo" required>
+        
+            <label for="correo"><h4>Ingresar un correo electrónico:</h4></label>
+            <input type="email" id="correo" name="correo" placeholder="correo@example.com" required>
+        
+            <label for="celular"><h4>Ingresar un celular de contacto:</h4></label>
+            <input type="tel" id="celular" name="celular" placeholder="Número de celular" required>
+        
+            <label for="opcional"><h4>Ingresar un número fijo o celular adicional (opcional):</h4></label>
+            <input type="tel" id="opcional" name="opcional" placeholder="Número fijo o celular (opcional)">
+        
+            <h4>Seleccione alguno de los medios por los cuales le gustaría ser contactado:</h4>
+            <label for="SelectOption">Por favor, seleccione una opción:</label>
+            <select name="Options" id="SelectOption">
+                <option value="opciones">Seleccione una opción</option>
+                <option value="service">What's App</option>
+                <option value="email">Correo electrónico</option>
+                <option value="llamada">Llamada</option>
+                <option value="medioregistrado">Cualquier medio registrado</option>
+            </select>
+        
+            <h4>¿Desea agregar alguna información adicional?: por favor, descríbala</h4>
+            <textarea name="TextArea" rows="5" placeholder="Ingrese la descripción aquí"></textarea>
+        
+            <h4>¿Acepta los términos y condiciones para el tratamiento de sus datos?</h4>
+            <label>
+                <input type="radio" name="InputRadio" value="si" checked>
+                Sí, acepto.
+            </label>
+            <label>
+                <input type="radio" name="InputRadio" value="no">
+                No acepto.
+            </label>
+
+            <p>   
+               <input type="submit" value="Enviar">
+            </p>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    var form = document.querySelector('.contact-form');
+            
+                    if (!form) {
+                        console.error('Formulario no encontrado');
+                        return;
+                    }
+            
+                    form.addEventListener('submit', function(event) {
+                        var nombre = document.getElementById('nombre').value;
+                        var apellido = document.getElementById('apellido').value;
+                        var correo = document.getElementById('correo').value;
+                        var celular = document.getElementById('celular').value;
+                        var opcional = document.getElementById('opcional').value;
+            
+                        if (!validarTexto(nombre)) {
+                            alert('El campo Nombre solo debe contener letras y espacios.');
+                            event.preventDefault();
+                            return;
+                        }
+            
+                        if (!validarTexto(apellido)) {
+                            alert('El campo Apellido solo debe contener letras y espacios.');
+                            event.preventDefault();
+                            return;
+                        }
+            
+                        if (!validarCorreo(correo)) {
+                            alert('El correo electrónico ingresado no es válido.');
+                            event.preventDefault();
+                            return;
+                        }
+            
+                        if (!validarTelefono(celular)) {
+                            alert('El campo Celular solo debe contener números.');
+                            event.preventDefault();
+                            return;
+                        }
+            
+                        if (opcional.trim() !== '' && !validarTelefono(opcional)) {
+                            alert('El campo Opcional solo debe contener números.');
+                            event.preventDefault();
+                            return;
+                        }
+                    });
+            
+                    function validarTexto(texto) {
+                        return /^[a-zA-Z\sáéíóúÁÉÍÓÚñÑüÜ]+$/.test(texto);
+                    }
+            
+                    function validarCorreo(correo) {
+                        return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(correo);
+                    }
+            
+                    function validarTelefono(telefono) {
+                        return /^\d+$/.test(telefono);
+                    }
+                });
+            </script>
+
+        <br>
+        
+    </form>
+    <P>
+        <a href="INDEX.TECH SOLUTIONS.html" style="text-decoration: none;">Regresar al menú principal</a>
+    </P>
+    
+</body>
+</html>
